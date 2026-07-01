@@ -1,5 +1,9 @@
 import Icon from "@/components/Icons";
+import ExploreScreen from "@/screens/explore";
 import HomeScreen from "@/screens/home";
+import MapScreen from "@/screens/map";
+import ProfileScreen from "@/screens/profile";
+import RescueScreen from "@/screens/rescue";
 import { COLORS } from "@/styles/Colors";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { BlurView } from "expo-blur";
@@ -48,7 +52,7 @@ export default function HomeTabLayout() {
       />
       <BottomTabs.Screen
         name="explore"
-        component={HomeScreen}
+        component={ExploreScreen}
         options={{
           title: "Explorar",
           tabBarIcon: ({ size, color }) => (
@@ -58,7 +62,7 @@ export default function HomeTabLayout() {
       />
       <BottomTabs.Screen
         name="map"
-        component={HomeScreen}
+        component={MapScreen}
         options={{
           title: "Mapa",
           tabBarIcon: ({ size, color }) => (
@@ -68,7 +72,7 @@ export default function HomeTabLayout() {
       />
       <BottomTabs.Screen
         name="rescue"
-        component={HomeScreen}
+        component={RescueScreen}
         options={{
           title: "Resgate",
           tabBarIcon: ({ size, color }) => (
@@ -78,7 +82,7 @@ export default function HomeTabLayout() {
       />
       <BottomTabs.Screen
         name="profile"
-        component={HomeScreen}
+        component={ProfileScreen}
         options={{
           title: "Perfil",
           tabBarIcon: ({ size, color }) => (
