@@ -3,5 +3,15 @@
     "source.fixAll": "explicit",
     "source.organizeImports": "explicit",
     "source.sortMembers": "explicit"
+  },
+  "[json]": {
+    "editor.defaultFormatter": null,
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": null
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": null,
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": null
   }
 }
