@@ -14,11 +14,11 @@ export const FONTS = {
     hero: 30,
   },
   fontWeight: {
-    normal: 400,
-    medium: 500,
-    semibold: 600,
-    bold: 700,
-    black: 900,
+    normal: "400",
+    medium: "500",
+    semibold: "600",
+    bold: "700",
+    black: "900",
   },
   lineHeight: {
     tight: "1.2",
@@ -26,4 +26,8 @@ export const FONTS = {
     normal: "1.5",
     relaxed: "1.625",
   },
-};
+  fontFamily: {
+    playfairDisplay: "Playfair-Display",
+    dmSans: "DM-Sans",
+  },
+} as const;

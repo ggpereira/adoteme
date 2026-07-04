@@ -8,17 +8,23 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.base.background,
-    gap: 12,
+  },
+  scrollContainer: { flex: 1 },
+  scrollContentContainer: {
+    paddingTop: 60,
     paddingVertical: 20,
-    paddingHorizontal: 12,
+    paddingHorizontal: 16,
+    gap: 16,
   },
   welcomeText: {
     fontSize: FONTS.fontSize.base,
     color: COLORS.base.foreground,
   },
   hero: {
+    fontFamily: FONTS.fontFamily.playfairDisplay,
     fontSize: Math.min(width * 0.075, FONTS.fontSize.hero),
     color: COLORS.base.foreground,
+    fontWeight: FONTS.fontWeight.bold,
   },
 });
 

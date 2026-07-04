@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     height: 70,
     paddingTop: 5,
-    backgroundColor: COLORS.base.background,
     borderTopWidth: 0,
     elevation: 0,
     shadowOpacity: 0,
@@ -34,7 +33,7 @@ export default function HomeTabLayout() {
         tabBarBackground: () => (
           <BlurView
             tint="light"
-            intensity={40}
+            intensity={100}
             style={StyleSheet.absoluteFill}
           />
         ),
