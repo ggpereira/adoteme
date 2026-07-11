@@ -65,10 +65,10 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     marginHorizontal: -16,
-    paddingLeft: 16,
   },
   scrollContent: {
     paddingVertical: 10,
+    paddingHorizontal: 16,
     gap: 12,
   },
 });

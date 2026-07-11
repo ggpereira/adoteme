@@ -40,6 +40,7 @@ export default function HomeTabLayout() {
         tabBarInactiveTintColor: COLORS.text["muted-foreground"],
         tabBarBackground: () => (
           <BlurView
+            blurMethod="dimezisBlurView"
             tint="light"
             intensity={100}
             style={StyleSheet.absoluteFill}
