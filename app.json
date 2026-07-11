@@ -8,7 +8,8 @@
     "scheme": "adoteme",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "icon": "./assets/expo.icon",
+      "bundleIdentifier": "com.adoteme.app"
     },
     "android": {
       "package": "com.adoteme.app",
@@ -79,7 +80,7 @@
                     "weight": 800,
                     "style": "italic"
                   },
-                                    {
+                  {
                     "path": "node_modules/@expo-google-fonts/playfair-display/900Black/PlayfairDisplay_900Black.ttf",
                     "weight": 900
                   },

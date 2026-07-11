@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
   scrollContainer: { flex: 1 },
   scrollContentContainer: {
     paddingTop: 60,
-    paddingVertical: 20,
+    paddingBottom: 80,
     paddingHorizontal: 16,
     gap: 16,
   },

@@ -7,27 +7,35 @@ import RescueScreen from "@/screens/rescue";
 import { COLORS } from "@/styles/Colors";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { BlurView } from "expo-blur";
+import { useMemo } from "react";
 import { StyleSheet } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const BottomTabs = createBottomTabNavigator();
 
 const styles = StyleSheet.create({
   tabContainer: {
     position: "absolute",
-    height: 70,
-    paddingTop: 5,
     borderTopWidth: 0,
+    height: 65,
+    paddingTop: 5,
     elevation: 0,
     shadowOpacity: 0,
   },
 });
 
 export default function HomeTabLayout() {
+  const { bottom } = useSafeAreaInsets();
+  const mergedStyles = useMemo(
+    () => StyleSheet.compose(styles.tabContainer, { paddingBottom: bottom }),
+    [bottom],
+  );
+
   return (
     <BottomTabs.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarStyle: styles.tabContainer,
+        tabBarStyle: mergedStyles,
         tabBarActiveTintColor: COLORS.primary.default,
         tabBarInactiveTintColor: COLORS.text["muted-foreground"],
         tabBarBackground: () => (

@@ -1,8 +1,9 @@
 import Text from "@/components/Text";
-import { ScrollView } from "react-native";
+import { ScrollView, StatusBar } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Banner from "./components/Banner";
 import Featured from "./components/Featured";
+import PetRescueProjects from "./components/PetRescueProjects";
 import Statistics from "./components/Statistics";
 import { styles } from "./styles";
 
@@ -51,6 +52,7 @@ const CARDS = [
 export default function HomeScreen() {
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar barStyle={"dark-content"} />
       <ScrollView
         style={styles.scrollContainer}
         contentContainerStyle={styles.scrollContentContainer}
@@ -60,6 +62,7 @@ export default function HomeScreen() {
         <Banner />
         <Statistics cards={STATISTICS} />
         <Featured featuredPets={CARDS} />
+        <PetRescueProjects />
       </ScrollView>
     </SafeAreaView>
   );
