@@ -64,7 +64,10 @@ export default function Filters({ onChangeFilter }: Props) {
                 ? styles.currentFilterStyle.color
                 : styles.chipText.color,
             }}
-            onPress={() => onPress(filter.value)}
+            onPress={() => {
+              if (filter.value === value) return;
+              onPress(filter.value);
+            }}
             icon={
               <Icon
                 name={filter.icon as IconNames}
