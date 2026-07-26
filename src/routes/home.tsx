@@ -6,7 +6,6 @@ import ProfileScreen from "@/screens/profile";
 import RescueScreen from "@/screens/rescue";
 import { COLORS } from "@/styles/Colors";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { BlurView } from "expo-blur";
 import { useMemo } from "react";
 import { StyleSheet } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -19,6 +18,8 @@ const styles = StyleSheet.create({
     borderTopWidth: 0,
     height: 65,
     paddingTop: 5,
+    backgroundColor: COLORS.base.background,
+    opacity: 0.95,
     elevation: 0,
     shadowOpacity: 0,
   },
@@ -38,14 +39,6 @@ export default function HomeTabLayout() {
         tabBarStyle: mergedStyles,
         tabBarActiveTintColor: COLORS.primary.default,
         tabBarInactiveTintColor: COLORS.text["muted-foreground"],
-        tabBarBackground: () => (
-          <BlurView
-            blurMethod="dimezisBlurView"
-            tint="light"
-            intensity={100}
-            style={StyleSheet.absoluteFill}
-          />
-        ),
       }}
     >
       <BottomTabs.Screen

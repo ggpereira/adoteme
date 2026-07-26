@@ -1,7 +1,8 @@
 import * as icons from "lucide-react-native/icons";
 
+export type IconNames = keyof typeof icons;
 interface IconProps {
-  name: keyof typeof icons;
+  name: IconNames;
   color?: string;
   size?: number;
 }

@@ -123,7 +123,7 @@ function FeaturedCard({
 
   return (
     <PetCard
-      cardWidth={width}
+      cardStyle={{ width, minHeight: 250 }}
       image={imageContainer}
       description={(props) => <Description {...props} />}
     />
