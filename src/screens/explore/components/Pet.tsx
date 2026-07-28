@@ -35,6 +35,8 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     flexDirection: "row",
+    gap: 4,
+    width: "100%",
     justifyContent: "space-between",
     marginBottom: 2,
   },
@@ -45,6 +47,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: FONTS.fontSize.base,
+    flexShrink: 1,
     fontWeight: FONTS.fontWeight.bold,
   },
   age: {

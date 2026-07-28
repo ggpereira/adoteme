@@ -42,7 +42,7 @@ const CARDS = [
     imageUrl: "https://images.unsplash.com/photo-1615111784767-4d7c527f32a1",
   },
   {
-    name: "Margot",
+    name: "Spencer",
     breed: "Poodle",
     distance: "0.2 km",
     imageUrl: "https://images.unsplash.com/photo-1675701917667-d654fa82e536",

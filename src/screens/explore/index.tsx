@@ -42,7 +42,7 @@ const PETS: Array<any> = [
   {
     id: "b67f1e87-a44d-4f2d-960e-9ea72b87718d",
     recentlyRescued: true,
-    name: "Margot",
+    name: "Spencer Oliveira",
     breed: "Poodle",
     distance: "0.2 km",
     imageUrl: "https://images.unsplash.com/photo-1675701917667-d654fa82e536",
