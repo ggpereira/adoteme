@@ -4,7 +4,9 @@ import Animated, {
   cancelAnimation,
   useAnimatedStyle,
   useSharedValue,
+  withDelay,
   withRepeat,
+  withSequence,
   withTiming,
 } from "react-native-reanimated";
 
@@ -45,7 +47,7 @@ export default function Marquee({
   style,
   textStyle,
   text,
-  duration = 2500,
+  duration = 4000,
 }: Props) {
   const [childrenWidth, setChildrenWidth] = useState<number>(0);
   const [parentWidth, setParentWidth] = useState<number>(0);
@@ -64,10 +66,16 @@ export default function Marquee({
 
   useEffect(() => {
     if (parentWidth - childrenWidth === 0) return;
+
     sharedOffset.value = withRepeat(
-      withTiming(offset.current, { duration }),
+      withDelay(
+        3000,
+        withSequence(
+          withTiming(offset.current, { duration }),
+          withTiming(0, { duration }),
+        ),
+      ),
       -1,
-      true,
     );
 
     return () => {
@@ -82,7 +90,13 @@ export default function Marquee({
       onLayout={(ev) => setParentWidth(ev.nativeEvent.layout.width)}
     >
       <MeasureElement onLayout={setChildrenWidth}>
-        <Animated.Text style={[textStyle, animatedText]}>{text}</Animated.Text>
+        <Animated.Text
+          ellipsizeMode="tail"
+          numberOfLines={1}
+          style={[textStyle, animatedText]}
+        >
+          {text}
+        </Animated.Text>
       </MeasureElement>
     </View>
   );
