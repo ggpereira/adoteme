@@ -3,6 +3,7 @@ import Chip from "@/components/Chip";
 import Icon from "@/components/Icons";
 import PetCard from "@/components/PetCard";
 import Text from "@/components/Text";
+import TextMarquee from "@/components/TextMarquee";
 import { COLORS } from "@/styles/Colors";
 import { FONTS } from "@/styles/Fonts";
 import { LinearGradient } from "expo-linear-gradient";
@@ -139,9 +140,7 @@ export default function Pet({
     (props: any) => (
       <View {...props}>
         <View style={styles.titleContainer}>
-          <Text style={styles.title} numberOfLines={1} ellipsizeMode="tail">
-            {name}
-          </Text>
+          <TextMarquee textStyle={styles.title} text={name} />
           <Text style={styles.age}>{age}</Text>
         </View>
         <Text style={styles.breed}>{breed}</Text>
