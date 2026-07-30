@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { StyleSheet, TextStyle, View, ViewStyle } from "react-native";
 import Animated, {
-  cancelAnimation,
   useAnimatedStyle,
+  useDerivedValue,
   useSharedValue,
   withDelay,
   withRepeat,
@@ -43,53 +43,58 @@ type Props = {
   textStyle?: TextStyle;
 };
 
-export default function Marquee({
-  style,
-  textStyle,
-  text,
-  duration = 4000,
-}: Props) {
-  const [childrenWidth, setChildrenWidth] = useState<number>(0);
-  const [parentWidth, setParentWidth] = useState<number>(0);
-  const offset = useRef<number>(0);
-  const sharedOffset = useSharedValue(0);
-  const animatedText = useAnimatedStyle(
-    () => ({
-      transform: [{ translateX: sharedOffset.value }],
-    }),
-    [],
-  );
+const EXTRA_OFFSET_AMOUNT = 5;
 
-  useEffect(() => {
-    offset.current = parentWidth - childrenWidth - 5;
-  }, [childrenWidth, parentWidth]);
+export default function Marquee({ textStyle, text, duration = 4000 }: Props) {
+  const parentWidth = useSharedValue(0);
+  const childrenWidth = useSharedValue(0);
 
-  useEffect(() => {
-    if (parentWidth - childrenWidth === 0) return;
-
-    sharedOffset.value = withRepeat(
+  const sharedOffset = useDerivedValue(() => {
+    if (childrenWidth.value <= parentWidth.value) return 0;
+    const offset =
+      parentWidth.value - childrenWidth.value - EXTRA_OFFSET_AMOUNT;
+    return withRepeat(
       withDelay(
         3000,
         withSequence(
-          withTiming(offset.current, { duration }),
+          withTiming(offset, { duration }),
           withTiming(0, { duration }),
         ),
       ),
       -1,
     );
+  });
 
-    return () => {
-      cancelAnimation(sharedOffset);
+  const animatedText = useAnimatedStyle(() => {
+    return {
+      transform: [{ translateX: sharedOffset.value }],
     };
-  }, [parentWidth, childrenWidth]);
+  }, []);
+
+  const setParentWidth = (width: number) => {
+    parentWidth.value = width;
+  };
+
+  const setChildrenWidth = (width: number) => {
+    childrenWidth.value = width;
+  };
 
   return (
     <View
-      style={{ flexShrink: 1 }}
+      style={{
+        flexShrink: 1,
+        flexDirection: "row",
+        flex: 1,
+      }}
       pointerEvents="box-none"
       onLayout={(ev) => setParentWidth(ev.nativeEvent.layout.width)}
     >
-      <MeasureElement onLayout={setChildrenWidth}>
+      <MeasureElement
+        onLayout={(ev) => {
+          console.log("onLayoutChild", ev);
+          setChildrenWidth(ev);
+        }}
+      >
         <Animated.Text
           ellipsizeMode="tail"
           numberOfLines={1}
