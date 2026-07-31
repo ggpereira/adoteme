@@ -98,7 +98,6 @@ export default function Marquee({ textStyle, text, duration = 4000 }: Props) {
     >
       <MeasureElement
         onLayout={(ev) => {
-          console.log("onLayoutChild", ev);
           setChildrenWidth(ev);
         }}
       >
