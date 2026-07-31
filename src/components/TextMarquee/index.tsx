@@ -14,6 +14,9 @@ const styles = StyleSheet.create({
   scrollElement: {
     opacity: 1,
   },
+  static: {
+    position: "absolute",
+  },
 });
 
 function MeasureElement({
@@ -43,16 +46,13 @@ type Props = {
   textStyle?: TextStyle;
 };
 
-const EXTRA_OFFSET_AMOUNT = 5;
-
 export default function Marquee({ textStyle, text, duration = 4000 }: Props) {
   const parentWidth = useSharedValue(0);
   const childrenWidth = useSharedValue(0);
 
   const sharedOffset = useDerivedValue(() => {
     if (childrenWidth.value <= parentWidth.value) return 0;
-    const offset =
-      parentWidth.value - childrenWidth.value - EXTRA_OFFSET_AMOUNT;
+    const offset = parentWidth.value - childrenWidth.value - 5;
     return withRepeat(
       withDelay(
         3000,
@@ -68,8 +68,15 @@ export default function Marquee({ textStyle, text, duration = 4000 }: Props) {
   const animatedText = useAnimatedStyle(() => {
     return {
       transform: [{ translateX: sharedOffset.value }],
+      opacity: sharedOffset.value != 0 ? 1 : 0,
     };
   }, []);
+
+  const animatedStaticText = useAnimatedStyle(() => {
+    return {
+      opacity: sharedOffset.value != 0 ? 0 : 1,
+    };
+  });
 
   const setParentWidth = (width: number) => {
     parentWidth.value = width;
@@ -99,6 +106,18 @@ export default function Marquee({ textStyle, text, duration = 4000 }: Props) {
           ellipsizeMode="tail"
           numberOfLines={1}
           style={[textStyle, animatedText]}
+        >
+          {text}
+        </Animated.Text>
+        <Animated.Text
+          ellipsizeMode="tail"
+          numberOfLines={1}
+          style={[
+            textStyle,
+            styles.static,
+            animatedStaticText,
+            { width: parentWidth },
+          ]}
         >
           {text}
         </Animated.Text>
