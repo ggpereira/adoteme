@@ -1,0 +1,161 @@
+import type { ExpoConfig } from "expo/config";
+
+const config: ExpoConfig = {
+  name: "adoteme",
+  slug: "adoteme",
+  version: "1.0.0",
+  orientation: "portrait",
+  icon: "./assets/images/icon.png",
+  scheme: "adoteme",
+  userInterfaceStyle: "automatic",
+  ios: {
+    icon: "./assets/expo.icon",
+    bundleIdentifier: "com.adoteme.app",
+  },
+  android: {
+    package: "com.adoteme.app",
+    config: {
+      googleMaps: {
+        apiKey: process.env.GOOGLE_MAPS_API_KEY ?? "",
+      },
+    },
+    adaptiveIcon: {
+      backgroundColor: "#E6F4FE",
+      foregroundImage: "./assets/images/android-icon-foreground.png",
+      backgroundImage: "./assets/images/android-icon-background.png",
+      monochromeImage: "./assets/images/android-icon-monochrome.png",
+    },
+    predictiveBackGestureEnabled: false,
+  },
+  web: {
+    bundler: "metro",
+    output: "static",
+    favicon: "./assets/images/favicon.png",
+  },
+  plugins: [
+    [
+      "expo-font",
+      {
+        android: {
+          fonts: [
+            {
+              fontFamily: "Playfair-Display",
+              fontDefinitions: [
+                {
+                  path: "node_modules/@expo-google-fonts/playfair-display/400Regular/PlayfairDisplay_400Regular.ttf",
+                  weight: 400,
+                },
+                {
+                  path: "node_modules/@expo-google-fonts/playfair-display/400Regular_Italic/PlayfairDisplay_400Regular_Italic.ttf",
+                  weight: 400,
+                  style: "italic",
+                },
+                {
+                  path: "node_modules/@expo-google-fonts/playfair-display/500Medium/PlayfairDisplay_500Medium.ttf",
+                  weight: 500,
+                },
+                {
+                  path: "node_modules/@expo-google-fonts/playfair-display/500Medium_Italic/PlayfairDisplay_500Medium_Italic.ttf",
+                  weight: 500,
+                  style: "italic",
+                },
+                {
+                  path: "node_modules/@expo-google-fonts/playfair-display/600SemiBold/PlayfairDisplay_600SemiBold.ttf",
+                  weight: 600,
+                },
+                {
+                  path: "node_modules/@expo-google-fonts/playfair-display/600SemiBold_Italic/PlayfairDisplay_600SemiBold_Italic.ttf",
+                  weight: 600,
+                  style: "italic",
+                },
+                {
+                  path: "node_modules/@expo-google-fonts/playfair-display/700Bold/PlayfairDisplay_700Bold.ttf",
+                  weight: 700,
+                },
+                {
+                  path: "node_modules/@expo-google-fonts/playfair-display/700Bold_Italic/PlayfairDisplay_700Bold_Italic.ttf",
+                  weight: 700,
+                  style: "italic",
+                },
+                {
+                  path: "node_modules/@expo-google-fonts/playfair-display/800ExtraBold/PlayfairDisplay_800ExtraBold.ttf",
+                  weight: 800,
+                },
+                {
+                  path: "node_modules/@expo-google-fonts/playfair-display/800ExtraBold_Italic/PlayfairDisplay_800ExtraBold_Italic.ttf",
+                  weight: 800,
+                  style: "italic",
+                },
+                {
+                  path: "node_modules/@expo-google-fonts/playfair-display/900Black/PlayfairDisplay_900Black.ttf",
+                  weight: 900,
+                },
+                {
+                  path: "node_modules/@expo-google-fonts/playfair-display/900Black_Italic/PlayfairDisplay_900Black_Italic.ttf",
+                  weight: 900,
+                  style: "italic",
+                },
+              ],
+            },
+            {
+              fontFamily: "DM-Sans",
+              fontDefinitions: [
+                {
+                  path: "node_modules/@expo-google-fonts/dm-sans/400Regular/DMSans_400Regular.ttf",
+                  weight: 400,
+                },
+                {
+                  path: "node_modules/@expo-google-fonts/dm-sans/400Regular_Italic/DMSans_400Regular_Italic.ttf",
+                  weight: 400,
+                  style: "italic",
+                },
+                {
+                  path: "node_modules/@expo-google-fonts/dm-sans/500Medium/DMSans_500Medium.ttf",
+                  weight: 500,
+                },
+                {
+                  path: "node_modules/@expo-google-fonts/dm-sans/400Regular_Italic/DMSans_400Regular_Italic.ttf",
+                  weight: 500,
+                  style: "italic",
+                },
+                {
+                  path: "node_modules/@expo-google-fonts/dm-sans/700Bold/DMSans_700Bold.ttf",
+                  weight: 700,
+                },
+                {
+                  path: "node_modules/@expo-google-fonts/dm-sans/700Bold_Italic/DMSans_700Bold_Italic.ttf",
+                  weight: 700,
+                  style: "italic",
+                },
+              ],
+            },
+          ],
+        },
+        ios: {
+          fonts: [],
+        },
+      },
+    ],
+    [
+      "expo-splash-screen",
+      {
+        backgroundColor: "#208AEF",
+        android: {
+          image: "./assets/images/splash-icon.png",
+          imageWidth: 76,
+        },
+      },
+    ],
+    [
+      "react-native-maps",
+      {
+        androidGoogleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY ?? "",
+      },
+    ],
+  ],
+  experiments: {
+    reactCompiler: true,
+  },
+};
+
+export default config;
