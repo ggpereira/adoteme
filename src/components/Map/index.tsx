@@ -4,7 +4,7 @@ import MapView, { MapViewProps, PROVIDER_GOOGLE } from "react-native-maps";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "red",
+    backgroundColor: "transparent",
   },
   map: {
     width: "100%",

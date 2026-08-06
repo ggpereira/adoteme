@@ -1,5 +1,4 @@
 import { COLORS } from "@/styles/Colors";
-import { FONTS } from "@/styles/Fonts";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
@@ -23,12 +22,6 @@ export const styles = StyleSheet.create({
   row: {
     gap: 10,
     marginBottom: 10,
-  },
-  title: {
-    fontFamily: FONTS.fontFamily.playfairDisplay,
-    fontSize: FONTS.fontSize["5xl"],
-    fontWeight: FONTS.fontWeight.bold,
-    color: COLORS.base.foreground,
   },
 });
 

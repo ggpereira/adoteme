@@ -1,4 +1,5 @@
 import { COLORS } from "@/styles/Colors";
+import { FONTS } from "@/styles/Fonts";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
@@ -7,9 +8,15 @@ export const styles = StyleSheet.create({
     backgroundColor: COLORS.base.background,
     paddingVertical: 20,
     paddingBottom: 30,
+    gap: 16,
   },
   header: {
-    flex: 1,
+    paddingHorizontal: 16,
+    paddingTop: 16,
+  },
+  subtitle: {
+    fontSize: FONTS.fontSize.sm,
+    color: COLORS.text["muted-foreground"],
   },
 });
 

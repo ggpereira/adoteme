@@ -1,3 +1,4 @@
+import { globalStyles } from "@/styles/global";
 import { useCallback, useMemo } from "react";
 import { FlatList, ListRenderItemInfo, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -69,7 +70,7 @@ export default function ExploreScreen() {
   const Header = useMemo(
     () => (
       <View style={styles.header}>
-        <Text style={styles.title}>Explorar</Text>
+        <Text style={globalStyles.screenTitle}>Explorar</Text>
         <Search
           onSearch={(text) => {
             console.log(`search for ${text} `);
