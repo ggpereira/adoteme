@@ -1,5 +1,11 @@
+import { withLocationService } from "@/services/LocationService/withLocationService";
+import { LocationObject } from "expo-location";
 import { StyleSheet, View } from "react-native";
-import MapView, { MapViewProps, PROVIDER_GOOGLE } from "react-native-maps";
+import MapView, {
+  Camera,
+  MapViewProps,
+  PROVIDER_GOOGLE,
+} from "react-native-maps";
 
 const styles = StyleSheet.create({
   container: {
@@ -12,12 +18,28 @@ const styles = StyleSheet.create({
   },
 });
 
-type Props = {} & MapViewProps;
+type Props = {
+  location: LocationObject;
+} & MapViewProps;
 
-export default function Map(props: Props) {
+function Map(props: Props) {
+  const { camera, location } = props;
   return (
     <View style={styles.container}>
-      <MapView provider={PROVIDER_GOOGLE} style={styles.map} {...props} />
+      <MapView
+        {...props}
+        provider={PROVIDER_GOOGLE}
+        style={styles.map}
+        camera={{
+          ...(camera as Camera),
+          center: {
+            latitude: location.coords.latitude,
+            longitude: location.coords.longitude,
+          },
+        }}
+      />
     </View>
   );
 }
+
+export default withLocationService(Map);

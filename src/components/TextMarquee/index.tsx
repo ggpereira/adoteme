@@ -30,6 +30,7 @@ function MeasureElement({
     <Animated.ScrollView
       style={styles.scrollElement}
       horizontal
+      showsHorizontalScrollIndicator={false}
       pointerEvents="box-none"
     >
       <View onLayout={(ev) => onLayout(ev.nativeEvent.layout.width)}>

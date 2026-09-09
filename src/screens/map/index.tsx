@@ -1,6 +1,5 @@
 import Map from "@/components/Map";
 import Text from "@/components/Text";
-import { withLocationService } from "@/services/withLocationService";
 import { globalStyles } from "@/styles/global";
 import MapStyles from "@/styles/MapStyles";
 import { LocationObject } from "expo-location";
@@ -28,10 +27,6 @@ function MapScreen({ location }: Props) {
         <View style={[{ flex: 1, width }]}>
           <Map
             camera={{
-              center: {
-                latitude,
-                longitude,
-              },
               heading: 0,
               pitch: 0,
               altitude: 50,
@@ -45,4 +40,4 @@ function MapScreen({ location }: Props) {
   );
 }
 
-export default withLocationService(MapScreen);
+export default MapScreen;
