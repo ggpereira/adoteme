@@ -1,4 +1,5 @@
 import Icon from "@/components/Icons";
+import TabBarBlur, { BlurScreenLayout } from "@/components/TabBarBlur";
 import ExploreScreen from "@/screens/explore";
 import HomeScreen from "@/screens/home";
 import MapScreen from "@/screens/map";
@@ -18,8 +19,8 @@ const styles = StyleSheet.create({
     borderTopWidth: 0,
     height: 65,
     paddingTop: 5,
-    backgroundColor: COLORS.base.background,
-    opacity: 0.95,
+    backgroundColor: "transparent",
+    overflow: "hidden",
     elevation: 0,
     shadowOpacity: 0,
   },
@@ -28,18 +29,24 @@ const styles = StyleSheet.create({
 export default function HomeTabLayout() {
   const { bottom } = useSafeAreaInsets();
   const mergedStyles = useMemo(
-    () => StyleSheet.compose(styles.tabContainer, { paddingBottom: bottom }),
+    () =>
+      StyleSheet.compose(styles.tabContainer, {
+        height: styles.tabContainer.height + bottom,
+        paddingBottom: bottom,
+      }),
     [bottom],
   );
 
   return (
     <BottomTabs.Navigator
-      screenOptions={{
+      screenLayout={BlurScreenLayout}
+      screenOptions={({ route }) => ({
         headerShown: false,
         tabBarStyle: mergedStyles,
         tabBarActiveTintColor: COLORS.primary.default,
         tabBarInactiveTintColor: COLORS.text["muted-foreground"],
-      }}
+        tabBarBackground: () => <TabBarBlur routeName={route.name} />,
+      })}
     >
       <BottomTabs.Screen
         name="home"

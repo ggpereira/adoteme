@@ -12,7 +12,6 @@ export const styles = StyleSheet.create({
   scrollContainer: { flex: 1 },
   scrollContentContainer: {
     paddingTop: 40,
-    paddingBottom: 81,
     paddingHorizontal: 16,
   },
   header: {

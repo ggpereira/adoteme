@@ -1,4 +1,5 @@
 import Text from "@/components/Text";
+import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { ScrollView, StatusBar } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Banner from "./components/Banner";
@@ -50,12 +51,17 @@ const CARDS = [
 ];
 
 export default function HomeScreen() {
+  const tabBarHeight = useBottomTabBarHeight();
+
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} edges={["top", "left", "right"]}>
       <StatusBar barStyle={"dark-content"} />
       <ScrollView
         style={styles.scrollContainer}
-        contentContainerStyle={styles.scrollContentContainer}
+        contentContainerStyle={[
+          styles.scrollContentContainer,
+          { paddingBottom: tabBarHeight + 16 },
+        ]}
       >
         <Text style={styles.welcomeText}>Olá, Gabriel 👋</Text>
         <Text style={styles.hero}>Encontre o seu novo melhor amigo</Text>

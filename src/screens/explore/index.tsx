@@ -1,4 +1,5 @@
 import { globalStyles } from "@/styles/global";
+import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { useCallback, useMemo } from "react";
 import { FlatList, ListRenderItemInfo, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -53,6 +54,8 @@ const PETS: Array<any> = [
 ];
 
 export default function ExploreScreen() {
+  const tabBarHeight = useBottomTabBarHeight();
+
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<any>) => <Pet key={item.id} {...item} />,
     [],
@@ -87,10 +90,14 @@ export default function ExploreScreen() {
   );
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} edges={["top", "left", "right"]}>
       <FlatList
         style={styles.scrollContainer}
-        contentContainerStyle={styles.scrollContentContainer}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={[
+          styles.scrollContentContainer,
+          { paddingBottom: tabBarHeight + 16 },
+        ]}
         columnWrapperStyle={styles.row}
         data={PETS}
         keyExtractor={(item) => item.id}

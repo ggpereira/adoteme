@@ -16,7 +16,7 @@ function MapScreen({ location }: Props) {
   const { latitude, longitude } = location.coords;
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} edges={["top", "left", "right"]}>
       <View style={styles.container}>
         <View style={styles.header}>
           <Text style={globalStyles.screenTitle}>Mapa de resgates</Text>
