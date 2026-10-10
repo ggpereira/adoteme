@@ -159,6 +159,16 @@ const config: ExpoConfig = {
           "Allow AdoteMe to use your location.",
       },
     ],
+    [
+      "expo-image-picker",
+      {
+        photosPermission:
+          "Permita que o AdoteMe acesse suas fotos para anexar imagens do animal.",
+        cameraPermission:
+          "Permita que o AdoteMe use a câmera para fotografar o animal.",
+        microphonePermission: false,
+      },
+    ],
   ],
   experiments: {
     reactCompiler: true,
