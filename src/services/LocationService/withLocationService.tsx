@@ -13,12 +13,25 @@ export const withLocationService = (Component: React.ComponentType<any>) => {
     ) => {
       try {
         const { status } = await Location.requestForegroundPermissionsAsync();
-
         if (status !== "granted") {
           throw Error("Permission to access location was denied");
         }
-
-        const result = await Location.getCurrentPositionAsync();
+        if (!(await Location.hasServicesEnabledAsync())) {
+          throw Error("Location services are disabled");
+        }
+        let result: LocationObject | null;
+        try {
+          result = await Location.getCurrentPositionAsync({
+            accuracy: Location.Accuracy.Balanced,
+          });
+        } catch {
+          // Emulators (and devices without a fresh GPS fix) often fail here;
+          // fall back to the last cached position.
+          result = await Location.getLastKnownPositionAsync();
+        }
+        if (!result) {
+          throw Error("Current location is unavailable");
+        }
         onSuccess(result);
       } catch (e) {
         onError(e as string);
@@ -28,7 +41,6 @@ export const withLocationService = (Component: React.ComponentType<any>) => {
     useEffect(() => {
       getCurrentLocation(
         (userLocation) => {
-          console.log("setting", userLocation);
           setLocation(userLocation);
         },
         (error) => {
