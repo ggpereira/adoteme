@@ -1,7 +1,13 @@
 import Text from "@/components/Text";
 import { COLORS } from "@/styles/Colors";
 import { FONTS } from "@/styles/Fonts";
-import { StyleSheet, TouchableOpacity, View, ViewStyle } from "react-native";
+import {
+  StyleSheet,
+  TextStyle,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
@@ -40,6 +46,7 @@ export type ContainedProps = {
     size: number;
   }) => React.ReactNode | undefined;
   style?: ViewStyle;
+  textStyle?: TextStyle;
   growToParentWidth?: boolean;
   text: string;
   backgroundColor?: string;
@@ -49,6 +56,7 @@ export type ContainedProps = {
 
 export function Contained({
   style,
+  textStyle,
   growToParentWidth = false,
   text,
   textColor,
@@ -67,7 +75,13 @@ export function Contained({
       onPress={onPress}
     >
       {leftElement?.({ color: textColor ?? styles.text.color, size: 12 })}
-      <Text style={[styles.text, textColor ? { color: textColor } : null]}>
+      <Text
+        style={[
+          styles.text,
+          textStyle,
+          textColor ? { color: textColor } : null,
+        ]}
+      >
         {text}
       </Text>
       {rightElement?.({ color: textColor ?? styles.text.color, size: 12 })}
