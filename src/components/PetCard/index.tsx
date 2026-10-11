@@ -22,11 +22,21 @@ type Props = {
   cardStyle?: ViewStyle;
   description: (props: any) => React.ReactNode;
   image: React.ReactNode;
+  onPress?: () => void;
 };
 
-export default function Card({ cardStyle, description, image }: Props) {
+export default function Card({
+  cardStyle,
+  description,
+  image,
+  onPress,
+}: Props) {
   return (
-    <TouchableOpacity activeOpacity={0.9} style={[styles.container, cardStyle]}>
+    <TouchableOpacity
+      activeOpacity={0.9}
+      style={[styles.container, cardStyle]}
+      onPress={onPress}
+    >
       <View style={styles.imageContainer}>{image}</View>
       {description?.({ style: styles.description })}
     </TouchableOpacity>
