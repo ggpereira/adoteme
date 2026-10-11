@@ -6,6 +6,7 @@ import Text from "@/components/Text";
 import TextMarquee from "@/components/TextMarquee";
 import { COLORS } from "@/styles/Colors";
 import { FONTS } from "@/styles/Fonts";
+import { SPACING } from "@/styles/global";
 import { LinearGradient } from "expo-linear-gradient";
 import { useCallback, useMemo, useState } from "react";
 import { Image, StyleSheet, View, useWindowDimensions } from "react-native";
@@ -92,7 +93,7 @@ type Props = {
   onPress: () => void;
 };
 
-const PADDINGS_SUM = 56;
+const PADDINGS_SUM = SPACING.screenHorizontal * 2;
 const GAP = 10;
 
 export default function Pet({

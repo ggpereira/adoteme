@@ -1,5 +1,6 @@
 import { COLORS } from "@/styles/Colors";
 import { FONTS } from "@/styles/Fonts";
+import { globalStyles } from "@/styles/global";
 import { Dimensions, StyleSheet } from "react-native";
 
 const { width } = Dimensions.get("window");
@@ -11,8 +12,7 @@ export const styles = StyleSheet.create({
   },
   scrollContainer: { flex: 1 },
   scrollContentContainer: {
-    paddingTop: 40,
-    paddingHorizontal: 16,
+    ...globalStyles.screenContent,
     gap: 16,
   },
   welcomeText: {

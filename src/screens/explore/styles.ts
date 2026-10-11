@@ -1,18 +1,15 @@
 import { COLORS } from "@/styles/Colors";
+import { globalStyles } from "@/styles/global";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.base.background,
-    gap: 12,
-    paddingVertical: 20,
-    paddingHorizontal: 12,
   },
   scrollContainer: { flex: 1 },
   scrollContentContainer: {
-    paddingTop: 40,
-    paddingHorizontal: 16,
+    ...globalStyles.screenContent,
   },
   header: {
     gap: 16,
