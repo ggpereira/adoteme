@@ -1,28 +1,16 @@
-import { COLORS } from "@/styles/Colors";
 import { FONTS } from "@/styles/Fonts";
 import { StyleSheet } from "react-native";
+import { fieldStyles } from "../fieldStyles";
 
 export const styles = StyleSheet.create({
   inputStyle: {
-    borderWidth: StyleSheet.hairlineWidth,
-    borderRadius: 12,
-    paddingHorizontal: 18,
-    height: 45,
+    ...fieldStyles.box,
+    ...fieldStyles.text,
     fontFamily: FONTS.fontFamily.dmSans,
-    color: COLORS.base.foreground,
-    backgroundColor: COLORS.surfaces.card,
   },
-  cursorColor: {
-    color: COLORS.text["muted-foreground"],
-  },
-  placeholderColor: {
-    color: COLORS.text["muted-foreground"],
-  },
-  container: {
-    gap: 6,
-  },
-  label: {
-    color: COLORS.base.foreground,
-    fontWeight: FONTS.fontWeight.medium,
+  multiline: {
+    height: undefined,
+    minHeight: 100,
+    paddingVertical: 12,
   },
 });

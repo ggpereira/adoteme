@@ -4,6 +4,8 @@ import {
   TextInputProps,
   View,
 } from "react-native";
+import FieldError from "../FieldError";
+import { fieldStyles } from "../fieldStyles";
 import { styles } from "./styles";
 
 export type InputProps = {
@@ -11,6 +13,7 @@ export type InputProps = {
   placeholder: string;
   onChangeText: (text: string) => void;
   value: string;
+  error?: string;
 } & TextInputProps;
 
 export default function Input({
@@ -18,20 +21,29 @@ export default function Input({
   onChangeText,
   value,
   placeholder,
+  error,
+  multiline,
   ...rest
 }: InputProps) {
   return (
-    <View style={styles.container}>
-      <Text style={styles.label}>{label}</Text>
+    <View style={fieldStyles.container}>
+      <Text style={fieldStyles.label}>{label}</Text>
       <NativeTextInput
-        style={styles.inputStyle}
+        style={[
+          styles.inputStyle,
+          multiline ? styles.multiline : null,
+          error ? fieldStyles.boxError : null,
+        ]}
         placeholder={placeholder}
-        placeholderTextColor={styles.placeholderColor.color}
-        cursorColor={styles.cursorColor.color}
+        placeholderTextColor={fieldStyles.placeholder.color}
+        cursorColor={fieldStyles.placeholder.color}
         onChangeText={onChangeText}
         value={value}
+        multiline={multiline}
+        textAlignVertical={multiline ? "top" : "center"}
         {...rest}
       />
+      <FieldError message={error} />
     </View>
   );
 }

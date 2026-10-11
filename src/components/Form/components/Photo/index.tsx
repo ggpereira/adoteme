@@ -12,6 +12,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import FieldError from "../FieldError";
+import { fieldStyles } from "../fieldStyles";
 import { styles } from "./styles";
 
 const PICKER_OPTIONS: ImagePicker.ImagePickerOptions = {
@@ -32,14 +34,18 @@ type Props = {
   value: string | null;
   onChange: (uri: string | null) => void;
   label?: string;
+  placeholder?: string;
   cameraType?: ImagePicker.CameraType;
+  error?: string;
 };
 
 export default function Photo({
   value,
   onChange,
   label,
+  placeholder = "Adicionar foto (opcional)",
   cameraType = ImagePicker.CameraType.back,
+  error,
 }: Props) {
   const [sourcesOpen, setSourcesOpen] = useState<boolean>(false);
 
@@ -100,15 +106,18 @@ export default function Photo({
       </TouchableOpacity>
     </Pressable>
   ) : (
-    <Pressable style={styles.emptyBox} onPress={() => setSourcesOpen(true)}>
+    <Pressable
+      style={[styles.emptyBox, error ? fieldStyles.boxError : null]}
+      onPress={() => setSourcesOpen(true)}
+    >
       <Icon name="Camera" size={16} color={COLORS.text["muted-foreground"]} />
-      <Text style={styles.placeholder}>Adicionar foto (opcional)</Text>
+      <Text style={fieldStyles.placeholder}>{placeholder}</Text>
     </Pressable>
   );
 
   return (
-    <View style={styles.container}>
-      {label && <Text style={styles.label}>{label}</Text>}
+    <View style={fieldStyles.container}>
+      {label && <Text style={fieldStyles.label}>{label}</Text>}
       <Dropdown
         items={SOURCES}
         onItemPress={handleSourcePress}
@@ -116,6 +125,7 @@ export default function Photo({
         onRequestDismiss={() => setSourcesOpen(false)}
         trigger={trigger}
       />
+      <FieldError message={error} />
     </View>
   );
 }

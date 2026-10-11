@@ -1,34 +1,20 @@
 import { COLORS } from "@/styles/Colors";
-import { FONTS } from "@/styles/Fonts";
 import { StyleSheet } from "react-native";
+import { fieldStyles } from "../fieldStyles";
 
 export const styles = StyleSheet.create({
-  container: {
-    gap: 6,
-  },
-  label: {
-    color: COLORS.base.foreground,
-    fontWeight: FONTS.fontWeight.medium,
-  },
   emptyBox: {
+    ...fieldStyles.box,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     gap: 8,
-    height: 64,
-    borderWidth: StyleSheet.hairlineWidth,
     borderStyle: "dashed",
-    borderRadius: 12,
-    borderColor: COLORS.text["muted-foreground"],
-    backgroundColor: COLORS.surfaces.card,
-  },
-  placeholder: {
-    color: COLORS.text["muted-foreground"],
-    fontSize: FONTS.fontSize.base,
+    backgroundColor: "transparent",
   },
   previewContainer: {
     height: 180,
-    borderRadius: 12,
+    borderRadius: 16,
     overflow: "hidden",
   },
   preview: {
