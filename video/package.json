@@ -1,0 +1,22 @@
+{
+  "name": "adoteme-video",
+  "private": true,
+  "description": "LinkedIn promo video for AdoteMe, rendered with Remotion from the Maestro clips",
+  "scripts": {
+    "clips": "node scripts/prepare-clips.mjs",
+    "studio": "npm run clips && remotion studio src/index.ts",
+    "render": "npm run clips && remotion render src/index.ts AdoteMe ../docs/linkedin/adoteme-linkedin.mp4",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.534",
+    "@remotion/google-fonts": "4.0.534",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.534"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.2",
+    "typescript": "6.0.3"
+  }
+}

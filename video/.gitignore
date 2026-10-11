@@ -1,0 +1,5 @@
+node_modules
+# Generated from the Maestro recordings by `npm run clips`
+public/clips
+src/clips.generated.json
+out
