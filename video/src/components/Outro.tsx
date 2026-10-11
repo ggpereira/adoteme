@@ -10,9 +10,10 @@ type Props = {
   title: string;
   author: string;
   stack: string;
+  link: string;
 };
 
-export default function Outro({ title, author, stack }: Props) {
+export default function Outro({ title, author, stack, link }: Props) {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const enter = spring({ frame, fps, config: { damping: 200 } });
@@ -57,7 +58,7 @@ export default function Outro({ title, author, stack }: Props) {
           opacity: 0.85,
         }}
       >
-        {author}
+        {author} · {link}
       </div>
     </AbsoluteFill>
   );

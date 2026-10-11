@@ -28,6 +28,7 @@ export default function AdoteMe() {
             title={OUTRO.title}
             author={OUTRO.author}
             stack={OUTRO.stack}
+            link={OUTRO.link}
           />
         </Series.Sequence>
       </Series>
