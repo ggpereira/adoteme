@@ -1,7 +1,9 @@
 import { Contained, ContainedProps } from "./Contained";
+import { Outlined } from "./Outlined";
 
 const BUTTON_TYPES = {
   contained: Contained,
+  outlined: Outlined,
 };
 
 type Props = {
