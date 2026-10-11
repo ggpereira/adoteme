@@ -19,21 +19,31 @@ type IconProp = {
 type Props = {
   style?: ViewStyle;
   icon?: IconProp;
+  active?: boolean;
   onPress: () => void;
 };
 
 export default function Favorite({
   style,
   icon = { color: COLORS.base.foreground, size: 14 },
+  active = false,
   onPress,
 }: Props) {
   return (
     <TouchableOpacity
       activeOpacity={0.8}
       style={[styles.container, style]}
+      accessibilityRole="button"
+      accessibilityLabel={active ? "Remover dos favoritos" : "Favoritar"}
+      accessibilityState={{ selected: active }}
       onPress={onPress}
     >
-      <Icon name="Heart" {...icon} />
+      <Icon
+        name="Heart"
+        {...icon}
+        color={active ? COLORS.urgency.high : icon.color}
+        fill={active ? COLORS.urgency.high : "transparent"}
+      />
     </TouchableOpacity>
   );
 }
