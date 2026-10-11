@@ -54,7 +54,7 @@ export default function Dropdown({
         </TouchableOpacity>
       );
     },
-    [],
+    [onItemPress, onRequestDismiss],
   );
 
   useEffect(() => {
