@@ -1,0 +1,11 @@
+# Starts recording unless the run was started with `-e RECORD=false`.
+# On Android, Maestro saves the video on the device at
+# /sdcard/maestro-screenrecording.mp4; scripts/record-demo.ps1 pulls it.
+appId: com.adoteme.app
+---
+- runFlow:
+    when:
+      true: ${RECORD != "false"}
+    commands:
+      - startRecording: scene
+- runFlow: pause.yaml

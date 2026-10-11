@@ -1,0 +1,9 @@
+# Holds the current frame for ~1.2s so the video has a human pace.
+# Maestro has no plain "sleep": waiting for an element that never appears,
+# marked optional, is the idiomatic way to pause.
+appId: com.adoteme.app
+---
+- extendedWaitUntil:
+    visible: "__maestro_pause__"
+    timeout: 1200
+    optional: true

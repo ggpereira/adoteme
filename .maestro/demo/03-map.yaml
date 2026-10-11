@@ -1,0 +1,11 @@
+# Scene 3: Map (needs a location set on the emulator)
+appId: com.adoteme.app
+---
+- runFlow: ../common/start-recording.yaml
+- tapOn: "Mapa"
+- extendedWaitUntil:
+    visible: "Mapa de resgates"
+    timeout: 5000
+- runFlow: ../common/pause.yaml
+- runFlow: ../common/pause.yaml
+- runFlow: ../common/stop-recording.yaml

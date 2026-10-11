@@ -1,0 +1,44 @@
+# Scene 4: Rescue form: empty submit shows validation, then fill and send
+appId: com.adoteme.app
+---
+- runFlow: ../common/start-recording.yaml
+- tapOn: "Resgate"
+- runFlow: ../common/pause.yaml
+- scrollUntilVisible:
+    element: "Enviar chamado de resgate"
+    direction: DOWN
+    speed: 20
+- tapOn: "Enviar chamado de resgate"
+- runFlow: ../common/pause.yaml
+- scrollUntilVisible:
+    element: "Localização do animal *"
+    direction: UP
+    speed: 20
+- tapOn: "Rua, número, bairro"
+- inputText: "Av. Paulista, 1578"
+- tapOn: "(11) 99999-0000"
+- inputText: "11999990000"
+- hideKeyboard
+- tapOn:
+    text: "Selecione"
+    index: 0
+- tapOn: "Cão"
+- tapOn: "Selecione"
+- tapOn: "Ferido"
+- tapOn: "Alta"
+- runFlow: ../common/pause.yaml
+- tapOn: "Estado do animal, se está sozinho, se há risco imediato..."
+- inputText: "Cachorro ferido na calçada, sozinho e assustado."
+- hideKeyboard
+- scrollUntilVisible:
+    element: "Enviar chamado de resgate"
+    direction: DOWN
+    speed: 20
+- tapOn: "Enviar chamado de resgate"
+- extendedWaitUntil:
+    visible: "Resgate registrado!"
+    timeout: 3000
+- runFlow: ../common/pause.yaml
+- runFlow: ../common/stop-recording.yaml
+# Leave a clean form for the next run
+- tapOn: "Novo chamado"

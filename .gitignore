@@ -44,3 +44,6 @@ example
 
 # env file 
 .env
+
+# LinkedIn demo recordings
+docs/linkedin/**/*.mp4

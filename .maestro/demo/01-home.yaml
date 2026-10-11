@@ -1,0 +1,16 @@
+# Scene 1: Home. Also resets the app to a known state (Home tab, top).
+appId: com.adoteme.app
+---
+- tapOn: "Home"
+- swipe:
+    start: "50%,30%"
+    end: "50%,80%"
+    duration: 300
+
+- runFlow: ../common/start-recording.yaml
+- swipe:
+    start: "50%,75%"
+    end: "50%,45%"
+    duration: 1800
+- runFlow: ../common/pause.yaml
+- runFlow: ../common/stop-recording.yaml

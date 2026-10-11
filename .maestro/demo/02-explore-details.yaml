@@ -1,0 +1,21 @@
+# Scene 2: Explore (tab slide) → pet details (favorite, scroll) → back
+appId: com.adoteme.app
+---
+- runFlow: ../common/start-recording.yaml
+- tapOn: "Explorar"
+- runFlow: ../common/pause.yaml
+- tapOn: "Cães"
+- runFlow: ../common/pause.yaml
+- tapOn:
+    text: "Mel"
+    index: 0
+- runFlow: ../common/pause.yaml
+- tapOn: "Favoritar"
+- runFlow: ../common/pause.yaml
+- swipe:
+    start: "50%,75%"
+    end: "50%,40%"
+    duration: 1500
+- runFlow: ../common/pause.yaml
+- tapOn: "Voltar"
+- runFlow: ../common/stop-recording.yaml

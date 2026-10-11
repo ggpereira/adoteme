@@ -1,0 +1,8 @@
+appId: com.adoteme.app
+---
+- runFlow: pause.yaml
+- runFlow:
+    when:
+      true: ${RECORD != "false"}
+    commands:
+      - stopRecording

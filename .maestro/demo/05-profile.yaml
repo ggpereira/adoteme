@@ -1,0 +1,13 @@
+# Scene 5: Profile, then back to Home for the next run
+appId: com.adoteme.app
+---
+- runFlow: ../common/start-recording.yaml
+- tapOn: "Perfil"
+- runFlow: ../common/pause.yaml
+- swipe:
+    start: "50%,75%"
+    end: "50%,40%"
+    duration: 1800
+- runFlow: ../common/pause.yaml
+- runFlow: ../common/stop-recording.yaml
+- tapOn: "Home"
