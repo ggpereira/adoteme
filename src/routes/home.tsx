@@ -10,6 +10,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useMemo } from "react";
 import { StyleSheet } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { forSlide, SlideSpec } from "./transitions";
 
 const BottomTabs = createBottomTabNavigator();
 
@@ -46,6 +47,8 @@ export default function HomeTabLayout() {
         tabBarActiveTintColor: COLORS.primary.default,
         tabBarInactiveTintColor: COLORS.text["muted-foreground"],
         tabBarBackground: () => <TabBarBlur routeName={route.name} />,
+        sceneStyleInterpolator: forSlide,
+        transitionSpec: SlideSpec,
       })}
     >
       <BottomTabs.Screen

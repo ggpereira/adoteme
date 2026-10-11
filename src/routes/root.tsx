@@ -1,8 +1,10 @@
+import PetDetailsScreen from "@/screens/petDetails";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeTabLayout from "./home";
+import { RootStackParamList } from "./types";
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function RootLayout() {
   return (
@@ -12,6 +14,7 @@ export default function RootLayout() {
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="home-tabs" component={HomeTabLayout} />
+        <Stack.Screen name="pet-details" component={PetDetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
