@@ -1,6 +1,6 @@
 # Texto do post: AdoteMe
 
-Escolha uma versão e ajuste com a sua voz. Troque `[link do repositório]` pelo link real.
+Escolha uma versão e ajuste com a sua voz.
 Suba o vídeo **direto no LinkedIn** (não como link do YouTube) e coloque o link do repositório **no primeiro comentário**, porque posts com links externos costumam ter menos alcance.
 
 ---
@@ -50,7 +50,7 @@ Próximos passos: backend, autenticação e o fluxo completo de adoção.
 
 Feedbacks são muito bem-vindos! 🙌
 
-🔗 Código: [link do repositório] (no primeiro comentário)
+🔗 Código: https://github.com/ggpereira/adoteme (no primeiro comentário)
 
 #ReactNative #Expo #TypeScript #MobileDevelopment #SoftwareArchitecture #SOLID
 
@@ -58,4 +58,4 @@ Feedbacks são muito bem-vindos! 🙌
 
 ## Primeiro comentário (para as duas versões)
 
-🔗 Código do projeto: [link do repositório]
+🔗 Código do projeto: https://github.com/ggpereira/adoteme

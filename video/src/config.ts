@@ -63,4 +63,5 @@ export const OUTRO = {
   title: "AdoteMe",
   author: "Gabriel Gomes",
   stack: "Expo · React Native · TypeScript",
+  link: "github.com/ggpereira/adoteme",
 };

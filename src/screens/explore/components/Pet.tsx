@@ -6,8 +6,9 @@ import Text from "@/components/Text";
 import TextMarquee from "@/components/TextMarquee";
 import { COLORS } from "@/styles/Colors";
 import { FONTS } from "@/styles/Fonts";
+import { SPACING } from "@/styles/global";
 import { LinearGradient } from "expo-linear-gradient";
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { Image, StyleSheet, View, useWindowDimensions } from "react-native";
 
 const styles = StyleSheet.create({
@@ -83,27 +84,30 @@ const InRescueChip = () => (
 );
 
 type Props = {
-  id: string;
-  recentlyRescued: false;
   name: string;
   breed: string;
   distance: string;
   imageUrl: string;
   age: string;
+  inRescue: boolean;
+  onPress: () => void;
 };
 
-const PADDINGS_SUM = 56;
+const PADDINGS_SUM = SPACING.screenHorizontal * 2;
 const GAP = 10;
 
 export default function Pet({
-  recentlyRescued,
+  inRescue,
   name,
   breed,
   distance,
   age,
   imageUrl,
+  onPress,
 }: Props) {
   const { width } = useWindowDimensions();
+  // TODO: persist favorites once the user API exists
+  const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
   const cardWidth = (width - PADDINGS_SUM - GAP) * 0.5;
   const cardHeight = cardWidth * 1.4;
@@ -122,18 +126,17 @@ export default function Pet({
           colors={["transparent", "transparent", "rgba(0, 0, 0, 0.4)"]}
         >
           <View style={styles.header}>
-            {recentlyRescued ? <InRescueChip /> : null}
+            {inRescue ? <InRescueChip /> : null}
             <Favorite
               style={styles.favorite}
-              onPress={() => {
-                console.log("debug on press");
-              }}
+              active={isFavorite}
+              onPress={() => setIsFavorite((favorite) => !favorite)}
             />
           </View>
         </LinearGradient>
       </View>
     ),
-    [],
+    [imageUrl, inRescue, isFavorite],
   );
 
   const Description = useCallback(
@@ -161,6 +164,7 @@ export default function Pet({
       }}
       image={ImageRender}
       description={Description}
+      onPress={onPress}
     />
   );
 }

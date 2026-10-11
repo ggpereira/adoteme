@@ -3,6 +3,7 @@ import PetCard from "@/components/PetCard";
 import Text from "@/components/Text";
 import { COLORS } from "@/styles/Colors";
 import { FONTS } from "@/styles/Fonts";
+import { SPACING } from "@/styles/global";
 import { LinearGradient } from "expo-linear-gradient";
 import { useMemo } from "react";
 import {
@@ -63,12 +64,13 @@ const styles = StyleSheet.create({
     fontSize: FONTS.fontSize.sm,
     color: COLORS.primary.default,
   },
+  // Bleeds to the screen edges so cards scroll edge to edge
   scrollContainer: {
-    marginHorizontal: -16,
+    marginHorizontal: -SPACING.screenHorizontal,
   },
   scrollContent: {
     paddingVertical: 10,
-    paddingHorizontal: 16,
+    paddingHorizontal: SPACING.screenHorizontal,
     gap: 12,
   },
 });

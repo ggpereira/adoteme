@@ -32,6 +32,20 @@ export const COLORS = {
     low: "#22c55e",
     "in-progress": "#3b82f6",
   },
+  feedback: {
+    success: "#22c55e",
+    "success-soft": "#dcfce7",
+    "success-strong": "#15803d",
+    "warning-soft": "#fef9c3",
+    "warning-strong": "#a16207",
+    "info-soft": "#eff6ff",
+    "info-strong": "#1d4ed8",
+  },
+  overlay: {
+    soft: "rgba(0, 0, 0, 0.3)",
+    strong: "rgba(0, 0, 0, 0.4)",
+    foreground: "#ffffff",
+  },
   semantic: {
     destructive: "#c0392b",
     "destructive-foreground": "#ffffff",
