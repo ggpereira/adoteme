@@ -12,7 +12,9 @@ const styles = StyleSheet.create({
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container} edges={["top", "left", "right"]}>
+    // Each screen owns its top inset, so full-bleed screens (e.g. pet details)
+    // can draw under the status bar
+    <SafeAreaView style={styles.container} edges={["left", "right"]}>
       <RootLayout />
     </SafeAreaView>
   );
