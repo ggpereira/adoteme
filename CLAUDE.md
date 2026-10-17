@@ -7,6 +7,7 @@ Pet adoption / rescue app built with Expo SDK 56 (dev client, not Expo Go), Reac
 ## Commands
 
 - `npm start` / `npm run android` / `npm run ios`: these wrap `expo start` with `EXPO_ROUTER_DISABLE_RN_NAVIGATION_CHECK=1` via cross-env. Always use the npm scripts, not a bare `npx expo start`.
+- `npm run android:release`: builds and installs a release APK on the emulator (signed with the debug keystore; replaces the dev client, same package). Never call `expo run`/`expo export` directly: `expo-router` ships inside `@expo/cli`, so every Expo command needs `EXPO_ROUTER_DISABLE_RN_NAVIGATION_CHECK=1`.
 - `npm run lint`: `expo lint`
 - No test setup exists.
 - `scripts/record-demo.ps1`: records the LinkedIn demo on the Android emulator by running the Maestro flows in `.maestro/demo/` (one clip per scene; `-NoRecord` only checks the flows). The flows select elements by visible text and `accessibilityLabel`, so renaming UI strings may require updating them.
