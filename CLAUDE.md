@@ -78,5 +78,5 @@ The Figma MCP server is configured in `.mcp.json` (remote server, OAuth). Each d
 
 ## Gotchas
 
-- Location on the Android emulator: set a location in Extended Controls before testing. `getCurrentPositionAsync` throws "Current location is unavailable" otherwise. `withLocationService` falls back to `getLastKnownPositionAsync`.
+- Location on the Android emulator: set a location in Extended Controls before testing. `getCurrentPositionAsync` throws "Current location is unavailable" otherwise. `getUserLocation` (used by `withLocationService`) tries `getLastKnownPositionAsync` first and only then `getCurrentPositionAsync` with a 10s timeout, because the latter can hang forever without a fresh fix.
 - Maps use `PROVIDER_GOOGLE` and require `GOOGLE_MAPS_API_KEY` at build time.
