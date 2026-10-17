@@ -31,9 +31,8 @@ npm run render      # gera docs/linkedin/adoteme-linkedin.mp4
 
 ## Antes de gravar
 
-- [ ] Emulador aberto, app rodando (`npm run android`) e na aba **Home**, rolada até o topo
+- [ ] Emulador aberto com o **build release** instalado (`npm run android:release`). A primeira cena reabre o app sozinha, então não importa em qual tela ele está
 - [ ] Localização definida no emulador (Extended Controls → Location → Set Location), para o Mapa carregar
-- [ ] Nenhum favorito marcado e formulário de Resgate limpo (recarregue o app com `r` no Metro)
 - [ ] Faça um ensaio sem gravar e confira se nada trava
 - [ ] Rode `powershell -ExecutionPolicy Bypass -File scripts/record-demo.ps1`. O script ativa a barra de status limpa e começa a gravar
 

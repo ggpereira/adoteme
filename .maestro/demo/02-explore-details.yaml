@@ -1,8 +1,12 @@
-# Scene 2: Explore (tab slide) → pet details (favorite, scroll) → back
+# Scene 2: Explore → pet details (favorite, scroll) → back
 appId: com.adoteme.app
 ---
-- runFlow: ../common/start-recording.yaml
+# Navigate first, so the clip starts on this scene's screen
 - tapOn: "Explorar"
+- extendedWaitUntil:
+    visible: "Buscar por nome ou raça"
+    timeout: 5000
+- runFlow: ../common/start-recording.yaml
 - runFlow: ../common/pause.yaml
 - tapOn: "Cães"
 - runFlow: ../common/pause.yaml
