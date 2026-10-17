@@ -42,7 +42,7 @@ export const SCENES: SceneConfig[] = [
     clip: "03-map",
     step: "Mapa",
     caption: "Veja resgates na sua região",
-    playbackRate: 1.6,
+    playbackRate: 2,
   },
   {
     clip: "04-rescue",
@@ -54,7 +54,7 @@ export const SCENES: SceneConfig[] = [
     clip: "05-profile",
     step: "Perfil",
     caption: "Acompanhe favoritos e adoções",
-    playbackRate: 2,
+    playbackRate: 1,
   },
 ];
 

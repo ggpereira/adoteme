@@ -7,7 +7,9 @@
 #   Manual (you navigate, press Enter to stop):
 #     powershell -ExecutionPolicy Bypass -File scripts/record-demo.ps1 -Manual
 #
-# Precondition: emulator running with the app open (npm run android).
+# Precondition: emulator running with the release build installed
+# (npm run android:release). Scene 1 restarts the app, which the dev client
+# may turn into the Expo launcher.
 # Clips are saved to docs/linkedin/<timestamp>/.
 
 param(

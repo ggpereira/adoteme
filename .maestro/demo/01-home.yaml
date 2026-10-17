@@ -1,11 +1,17 @@
-# Scene 1: Home. Also resets the app to a known state (Home tab, top).
+# Scene 1: Home. Restarts the app first, so every recording starts from a
+# clean state (no favorites, default filter, empty form). Meant for the
+# release build: with the dev client, a restart may open the Expo launcher.
 appId: com.adoteme.app
 ---
-- tapOn: "Home"
-- swipe:
-    start: "50%,30%"
-    end: "50%,80%"
-    duration: 300
+- launchApp:
+    stopApp: true
+    # A fresh release install has no location permission yet; without it the
+    # Map scene shows the "needs permission" placeholder instead of the map
+    permissions:
+      location: allow
+- extendedWaitUntil:
+    visible: "Em destaque"
+    timeout: 15000
 
 - runFlow: ../common/start-recording.yaml
 - swipe:

@@ -7,6 +7,7 @@ Pet adoption / rescue app built with Expo SDK 56 (dev client, not Expo Go), Reac
 ## Commands
 
 - `npm start` / `npm run android` / `npm run ios`: these wrap `expo start` with `EXPO_ROUTER_DISABLE_RN_NAVIGATION_CHECK=1` via cross-env. Always use the npm scripts, not a bare `npx expo start`.
+- `npm run android:release`: builds and installs a release APK on the emulator (signed with the debug keystore; replaces the dev client, same package). Never call `expo run`/`expo export` directly: `expo-router` ships inside `@expo/cli`, so every Expo command needs `EXPO_ROUTER_DISABLE_RN_NAVIGATION_CHECK=1`.
 - `npm run lint`: `expo lint`
 - No test setup exists.
 - `scripts/record-demo.ps1`: records the LinkedIn demo on the Android emulator by running the Maestro flows in `.maestro/demo/` (one clip per scene; `-NoRecord` only checks the flows). The flows select elements by visible text and `accessibilityLabel`, so renaming UI strings may require updating them.
@@ -78,5 +79,5 @@ The Figma MCP server is configured in `.mcp.json` (remote server, OAuth). Each d
 
 ## Gotchas
 
-- Location on the Android emulator: set a location in Extended Controls before testing. `getCurrentPositionAsync` throws "Current location is unavailable" otherwise. `withLocationService` falls back to `getLastKnownPositionAsync`.
+- Location on the Android emulator: set a location in Extended Controls before testing. `getCurrentPositionAsync` throws "Current location is unavailable" otherwise. `getUserLocation` (used by `withLocationService`) tries `getLastKnownPositionAsync` first and only then `getCurrentPositionAsync` with a 10s timeout, because the latter can hang forever without a fresh fix.
 - Maps use `PROVIDER_GOOGLE` and require `GOOGLE_MAPS_API_KEY` at build time.

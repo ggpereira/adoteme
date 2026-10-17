@@ -1,11 +1,28 @@
 # Scene 3: Map (needs a location set on the emulator)
 appId: com.adoteme.app
 ---
-- runFlow: ../common/start-recording.yaml
+# Navigate first, so the clip starts on this scene's screen
 - tapOn: "Mapa"
 - extendedWaitUntil:
     visible: "Mapa de resgates"
     timeout: 5000
+# Getting the device location can take a while (mainly right after the app
+# starts): wait until the "needs permission" placeholder is replaced by the
+# map before recording
+- extendedWaitUntil:
+    notVisible: "O mapa precisa de sua permissão para acessar a sua localização"
+    timeout: 25000
 - runFlow: ../common/pause.yaml
+- runFlow: ../common/start-recording.yaml
+# Android's screenrecord only writes frames when the screen changes, so a
+# static map would produce an empty clip: pan the map gently while recording
+- swipe:
+    start: "65%,60%"
+    end: "35%,45%"
+    duration: 2000
 - runFlow: ../common/pause.yaml
+- swipe:
+    start: "35%,45%"
+    end: "60%,55%"
+    duration: 2000
 - runFlow: ../common/stop-recording.yaml

@@ -1,4 +1,5 @@
 import Button from "@/components/Button";
+import Icon from "@/components/Icons";
 import Text from "@/components/Text";
 import { RootStackParamList } from "@/routes/types";
 import { getPetById } from "@/services/PetService";
@@ -49,7 +50,10 @@ export default function PetDetailsScreen({ route, navigation }: Props) {
           <ContactActions phone={pet.contact.phone} email={pet.contact.email} />
           {pet.status === "available" ? (
             <Button
-              text={`Quero adotar ${pet.name} 🐾`}
+              text={`Quero adotar ${pet.name}`}
+              rightElement={({ color, size }) => (
+                <Icon name="PawPrint" color={color} size={size} />
+              )}
               growToParentWidth
               style={styles.adoptButton}
               textStyle={styles.adoptButtonText}
