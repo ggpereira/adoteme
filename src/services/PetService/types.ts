@@ -21,3 +21,12 @@ export type Pet = {
     email: string;
   };
 };
+
+export type Coordinate = {
+  latitude: number;
+  longitude: number;
+};
+
+export type MapPet = Pick<Pet, "id" | "name" | "species" | "imageUrl"> & {
+  coordinate: Coordinate;
+};
