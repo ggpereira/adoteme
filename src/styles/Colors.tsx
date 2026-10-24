@@ -46,6 +46,17 @@ export const COLORS = {
     strong: "rgba(0, 0, 0, 0.4)",
     foreground: "#ffffff",
   },
+  translucent: {
+    "favorite-button": "rgba(255, 255, 255, 0.75)",
+    "tab-bar": "rgba(253, 246, 238, 0.6)",
+    "badge-urgent": "rgba(255, 127, 0, 0.7)",
+    "banner-chip": "rgba(255, 255, 255, 0.20)",
+  },
+  gradient: {
+    "scrim-light": "rgba(0, 0, 0, 0.15)",
+    scrim: "rgba(0, 0, 0, 0.4)",
+    "scrim-strong": "rgba(0, 0, 0, 0.8)",
+  },
   semantic: {
     destructive: "#c0392b",
     "destructive-foreground": "#ffffff",
