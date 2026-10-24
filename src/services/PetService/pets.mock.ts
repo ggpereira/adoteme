@@ -1,7 +1,7 @@
 import { Pet } from "./types";
 
 const SHELTER_CONTACT = {
-  phone: "+5511999990000",
+  phone: "+5555999990000",
   email: "contato@adoteme.org",
 };
 
@@ -14,8 +14,8 @@ export const PETS_MOCK: Pet[] = [
     age: "2 anos",
     gender: "Fêmea",
     size: "Médio",
-    city: "São Paulo",
-    state: "SP",
+    city: "Santa Maria",
+    state: "RS",
     distance: "1.2 km",
     status: "available",
     description:
@@ -33,8 +33,8 @@ export const PETS_MOCK: Pet[] = [
     age: "8 meses",
     gender: "Fêmea",
     size: "Pequeno",
-    city: "São Paulo",
-    state: "SP",
+    city: "Santa Maria",
+    state: "RS",
     distance: "1.6 km",
     status: "in-rescue",
     description:
@@ -52,8 +52,8 @@ export const PETS_MOCK: Pet[] = [
     age: "1 ano",
     gender: "Fêmea",
     size: "Pequeno",
-    city: "São Paulo",
-    state: "SP",
+    city: "Santa Maria",
+    state: "RS",
     distance: "0.8 km",
     status: "available",
     description:
@@ -71,8 +71,8 @@ export const PETS_MOCK: Pet[] = [
     age: "4 meses",
     gender: "Macho",
     size: "Pequeno",
-    city: "São Paulo",
-    state: "SP",
+    city: "Santa Maria",
+    state: "RS",
     distance: "0.2 km",
     status: "in-rescue",
     description:
