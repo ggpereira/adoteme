@@ -1,3 +1,4 @@
+import { MOTION } from "@/styles/Motion";
 import React from "react";
 import { StyleSheet, TextStyle, View, ViewStyle } from "react-native";
 import Animated, {
@@ -47,7 +48,11 @@ type Props = {
   textStyle?: TextStyle;
 };
 
-export default function Marquee({ textStyle, text, duration = 4000 }: Props) {
+export default function Marquee({
+  textStyle,
+  text,
+  duration = MOTION.duration.marquee,
+}: Props) {
   const parentWidth = useSharedValue(0);
   const childrenWidth = useSharedValue(0);
 
@@ -56,7 +61,7 @@ export default function Marquee({ textStyle, text, duration = 4000 }: Props) {
     const offset = parentWidth.value - childrenWidth.value - 5;
     return withRepeat(
       withDelay(
-        3000,
+        MOTION.delay.marquee,
         withSequence(
           withTiming(offset, { duration }),
           withTiming(0, { duration }),

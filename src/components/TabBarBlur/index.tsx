@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.base.background,
   },
   overlay: {
-    backgroundColor: "rgba(253, 246, 238, 0.6)",
+    backgroundColor: COLORS.translucent["tab-bar"],
   },
 });
 

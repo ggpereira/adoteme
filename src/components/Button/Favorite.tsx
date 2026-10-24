@@ -1,13 +1,14 @@
 import Icon from "@/components/Icons";
 import { COLORS } from "@/styles/Colors";
+import { RADIUS } from "@/styles/Radius";
 import { StyleSheet, TouchableOpacity, ViewStyle } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    backgroundColor: "rgba(255, 255, 255, 0.75)",
+    backgroundColor: COLORS.translucent["favorite-button"],
     padding: 6,
-    borderRadius: 14,
+    borderRadius: RADIUS.md,
   },
 });
 
