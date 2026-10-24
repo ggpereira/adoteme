@@ -19,8 +19,11 @@ const styles = StyleSheet.create({
 });
 
 type Props = {
+  children?: React.ReactNode;
   location: LocationObject;
-} & MapViewProps;
+  // The center always comes from the user's location
+  camera: Omit<Camera, "center">;
+} & Omit<MapViewProps, "camera">;
 
 function Map(props: Props) {
   const { camera, location } = props;
@@ -31,7 +34,7 @@ function Map(props: Props) {
         provider={PROVIDER_GOOGLE}
         style={styles.map}
         camera={{
-          ...(camera as Camera),
+          ...camera,
           center: {
             latitude: location.coords.latitude,
             longitude: location.coords.longitude,
