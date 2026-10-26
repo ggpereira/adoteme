@@ -1,5 +1,6 @@
 import { BottomTabNavigationOptions } from "@react-navigation/bottom-tabs";
-import { Dimensions, Easing } from "react-native";
+import { MOTION } from "@/styles/Motion";
+import { Dimensions } from "react-native";
 
 type SceneStyleInterpolator = NonNullable<
   BottomTabNavigationOptions["sceneStyleInterpolator"]
@@ -27,7 +28,7 @@ export const forSlide: SceneStyleInterpolator = ({ current }) => ({
 export const SlideSpec: TransitionSpec = {
   animation: "timing",
   config: {
-    duration: 250,
-    easing: Easing.out(Easing.cubic),
+    duration: MOTION.duration.normal,
+    easing: MOTION.easing.standard,
   },
 };

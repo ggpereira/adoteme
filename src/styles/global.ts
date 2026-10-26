@@ -2,8 +2,17 @@ import { StyleSheet } from "react-native";
 import { COLORS } from "./Colors";
 import { FONTS } from "./Fonts";
 
-// Shared screen spacing, so every tab starts its content at the same place
+// Spacing scale for padding, margin and gap. The screen* keys keep every tab
+// starting its content at the same place.
 export const SPACING = {
+  xxs: 2,
+  xs: 4,
+  sm: 8,
+  md: 12,
+  lg: 16,
+  xl: 20,
+  "2xl": 24,
+  "3xl": 32,
   screenTop: 20,
   screenHorizontal: 20,
   section: 24,
@@ -21,7 +30,7 @@ export const globalStyles = StyleSheet.create({
     color: COLORS.text["muted-foreground"],
   },
   screenHeader: {
-    gap: 4,
+    gap: SPACING.xs,
   },
   screenContent: {
     paddingTop: SPACING.screenTop,

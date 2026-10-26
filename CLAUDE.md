@@ -11,6 +11,7 @@ Pet adoption / rescue app built with Expo SDK 56 (dev client, not Expo Go), Reac
 - `npm run lint`: `expo lint`
 - No test setup exists.
 - `scripts/record-demo.ps1`: records the LinkedIn demo on the Android emulator by running the Maestro flows in `.maestro/demo/` (one clip per scene; `-NoRecord` only checks the flows). The flows select elements by visible text and `accessibilityLabel`, so renaming UI strings may require updating them.
+- Subagents in `.claude/agents/`: `qa-tester` (tests) and `ui-designer` (audits and fixes UI consistency against the `src/styles/` tokens; run it after UI changes).
 - `video/`: separate Remotion project (own `package.json`, excluded from the app `tsconfig`) that renders the promo video from the latest clips: `npm run studio` / `npm run render` inside `video/`. Scene texts and speeds live in `video/src/config.ts`; it reuses the app `COLORS`.
 - Native config lives in `app.config.ts` (typed `ExpoConfig`). Secrets come from `.env` (`GOOGLE_MAPS_API_KEY`), which is gitignored. Changing plugins or native config requires a new dev build.
 
@@ -24,7 +25,7 @@ Pet adoption / rescue app built with Expo SDK 56 (dev client, not Expo Go), Reac
 - `src/screens/<name>/`: `index.tsx` (default export `XScreen`), `styles.ts`, and `components/` for screen-only pieces.
 - `src/components/<Name>/index.tsx`: shared components (default export). Larger ones keep a sibling `styles.ts` and nested `components/` (see `Form/`, `Dropdown/`).
 - `src/services/`: cross-cutting logic as HOCs (e.g. `withLocationService` injects a `location` prop and renders `NeedsPermission` until it's available).
-- `src/styles/`: design tokens (`COLORS`, `FONTS`, `globalStyles`, `MapStyles`).
+- `src/styles/`: design tokens (`COLORS`, `FONTS`, `SPACING` + `globalStyles`, `RADIUS`, `SHADOWS`, `MOTION`, `MapStyles`).
 - `src/utils/`: small pure helpers (`debounce`, `formatNumber`).
 - Mock data currently lives inline in screens / `src/utils`. There is no backend yet.
 
@@ -32,7 +33,7 @@ Pet adoption / rescue app built with Expo SDK 56 (dev client, not Expo Go), Reac
 
 - Imports use the `@/` alias (→ `src/`, `@/assets/*` → `assets/`). Relative imports only for same-folder files (`./styles`, `./components/X`).
 - Components: `export default function Name(props: Props)`. Props are a local `type Props = {...}`; exported prop types are named `XProps`. Destructure props in the signature with defaults there.
-- Styling: `StyleSheet.create` only, no inline color or font literals. Use `COLORS.*` and `FONTS.fontSize/fontWeight/fontFamily` tokens. Screen styles go in `styles.ts` as `export const styles`. Small components define `styles` at the top of the file. Compose styles with arrays `[styles.x, cond ? {...} : null]`.
+- Styling: `StyleSheet.create` only, no inline color, font, spacing, radius, shadow or animation literals. Use `COLORS.*`, `FONTS.fontSize/fontWeight/fontFamily`, `SPACING.*`, `RADIUS.*`, `SHADOWS.*` and `MOTION.duration/delay/easing` tokens. Screen styles go in `styles.ts` as `export const styles`. Small components define `styles` at the top of the file. Compose styles with arrays `[styles.x, cond ? {...} : null]`.
 - Screen layout: start content with `globalStyles.screenContent` (top 20, sides 20) and use `SPACING` from `@/styles/global` for screen paddings, instead of hardcoded numbers. Screen headers use `globalStyles.screenHeader` + `screenTitle` + `screenSubtitle`. Each screen owns its top inset (`SafeAreaView edges={["top", "left", "right"]}`); the root `App` only handles the sides.
 - Text: use `@/components/Text` (applies DM Sans, disables font scaling) instead of RN `Text`. Screen titles use `globalStyles.screenTitle` (Playfair Display).
 - Icons: `<Icon name="..." />` from `@/components/Icons` (lucide-react-native names, typed `IconNames`).
@@ -70,7 +71,7 @@ Tie each point to the specific file or code it shaped, not generic definitions. 
 The Figma MCP server is configured in `.mcp.json` (remote server, OAuth). Each developer authenticates once via `/mcp` → figma → Authenticate.
 
 - For UI work, provide a Figma frame or layer link (right-click → *Copy link to selection*). Fetch its design context and a screenshot before writing code.
-- Map Figma variables to the existing tokens (`COLORS`, `FONTS`, `globalStyles` in `src/styles/`) instead of hardcoding values. Add a new token there when one is missing.
+- Map Figma variables to the existing tokens (`COLORS`, `FONTS`, `SPACING`, `RADIUS`, `SHADOWS`, `MOTION`, `globalStyles` in `src/styles/`) instead of hardcoding values. Add a new token there when one is missing.
 - Figma's generated code is React/web-flavored, so translate it to the project's React Native conventions:
   - `StyleSheet.create`, no web/Tailwind classes;
   - `@/components/Text` and `<Icon>` (lucide);

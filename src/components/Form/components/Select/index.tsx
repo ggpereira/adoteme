@@ -1,6 +1,7 @@
 import Dropdown from "@/components/Dropdown";
 import Icon from "@/components/Icons";
 import Text from "@/components/Text";
+import { MOTION } from "@/styles/Motion";
 import { useState } from "react";
 import { Pressable, View } from "react-native";
 import Animated, {
@@ -12,8 +13,6 @@ import { SelectOption } from "../../types";
 import FieldError from "../FieldError";
 import { fieldStyles } from "../fieldStyles";
 import { styles } from "./styles";
-
-const ROTATION_DURATION = 200;
 
 type Props = {
   label: string;
@@ -37,7 +36,7 @@ export default function Select({
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
 
   const rotation = useDerivedValue(() =>
-    withTiming(dropdownOpen ? 180 : 0, { duration: ROTATION_DURATION }),
+    withTiming(dropdownOpen ? 180 : 0, { duration: MOTION.duration.fast }),
   );
 
   const chevronAnimatedStyle = useAnimatedStyle(() => ({

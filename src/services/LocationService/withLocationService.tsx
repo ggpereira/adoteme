@@ -1,10 +1,14 @@
 import { LocationObject } from "expo-location";
-import { useEffect, useState } from "react";
+import { ComponentType, useEffect, useState } from "react";
 import { getUserLocation } from "./getUserLocation";
 import NeedsPermission from "./NeedsPermission";
 
-export const withLocationService = (Component: React.ComponentType<any>) => {
-  return (props: any) => {
+type LocationProps = { location: LocationObject };
+
+export const withLocationService = <P extends LocationProps>(
+  Component: ComponentType<P>,
+) => {
+  function WithLocationService(props: Omit<P, keyof LocationProps>) {
     const [location, setLocation] = useState<LocationObject | null>(null);
 
     useEffect(() => {
@@ -15,6 +19,12 @@ export const withLocationService = (Component: React.ComponentType<any>) => {
       return <NeedsPermission />;
     }
 
-    return <Component {...props} location={location} />;
-  };
+    return <Component {...(props as P)} location={location} />;
+  }
+
+  WithLocationService.displayName = `withLocationService(${
+    Component.displayName ?? Component.name
+  })`;
+
+  return WithLocationService;
 };
